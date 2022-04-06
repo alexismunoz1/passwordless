@@ -13,5 +13,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
    //    return res.send({ ok: "post" });
    // }
 
-   return await res.send([{ ok: "other" }, { result }]);
+   if (result) {
+      res.send([{ ok: "other" }, { result }]);
+   }
 }
