@@ -3,19 +3,11 @@ import { sendCode } from "lib/controller/auth";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
    const { method } = req;
-   const result = await sendCode(req.body.email);
 
    if (method === "OPTIONS") {
-      return res.send({ ok: "options" });
+      return res.status(200).send("ok");
    }
 
-   // if (method === "POST") {
-   //    return res.send({ ok: "post" });
-   // }
-
-   if (result) {
-      res.send([{ ok: "other" }, { result }]);
-   } else {
-      res.status(500).send({ ok: "todo salio mal" });
-   }
+   await sendCode(req.body.email);
+   res.status(200).send({ message: "se envio el mail" });
 }
