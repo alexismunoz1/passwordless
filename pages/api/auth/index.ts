@@ -13,5 +13,5 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
    //    return res.send({ ok: "post" });
    // }
 
-   res.send({ ok: "other" });
+   res.send([{ ok: "other" }, { mail: req.body.email }]);
 }
