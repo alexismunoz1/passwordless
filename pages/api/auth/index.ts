@@ -15,5 +15,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
    if (result) {
       res.send([{ ok: "other" }, { result }]);
+   } else {
+      res.status(500).send({ ok: "todo salio mal" });
    }
 }
