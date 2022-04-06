@@ -3,7 +3,7 @@ import { sendCode } from "lib/controller/auth";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
    const { method } = req;
-   // const result = await sendCode(req.body.email);
+   const result = await sendCode(req.body.email);
 
    if (method === "OPTIONS") {
       return res.send({ ok: "options" });
@@ -13,5 +13,5 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
    //    return res.send({ ok: "post" });
    // }
 
-   res.send([{ ok: "other" }, { mail: req.body.email }]);
+   return await res.send([{ ok: "other" }, { result }]);
 }
