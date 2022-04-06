@@ -9,9 +9,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       return res.send({ ok: "options" });
    }
 
-   if (method === "POST") {
-      return res.send({ ok: "post" });
-   }
+   // if (method === "POST") {
+   //    return res.send({ ok: "post" });
+   // }
 
    res.send({ ok: "other" });
 }
