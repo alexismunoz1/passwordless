@@ -5,13 +5,11 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
    if (method === "OPTIONS") {
       return res.status(200).send("ok options");
-   }
-
-   if (method === "GET") {
+   } else if (method === "GET") {
       return res.status(200).send("ok get");
-   }
-
-   if (method === "POST") {
+   } else if (method === "POST") {
       return res.status(200).send("ok post");
+   } else {
+      return res.status(200).send("ok other");
    }
 }
