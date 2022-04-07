@@ -4,8 +4,7 @@ import gen from "random-seed";
 import addMinutes from "date-fns/addMinutes";
 import { sendEmail } from "lib/sendgrid";
 
-var seed = "My Secret Seed";
-var random = gen.create(seed);
+var random = gen.create(process.env.SEED);
 
 export async function findOrCreateAuth(email: string): Promise<Auth> {
    const cleanEmail = email.trim().toLowerCase();
@@ -32,7 +31,7 @@ export async function findOrCreateAuth(email: string): Promise<Auth> {
 export async function sendCode(email: string) {
    const auth = await findOrCreateAuth(email);
 
-   const code = random.intBetween(100000, 999999);
+   const code = random.intBetween(10000, 99999);
    auth.data.code = code.toString();
 
    const now = new Date();

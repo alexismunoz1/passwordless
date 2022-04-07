@@ -3,12 +3,6 @@ import { generate } from "lib/jwt";
 import { Auth } from "lib/auth";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-   const { method } = req;
-
-   if (method === "OPTIONS") {
-      return res.status(200).send("ok");
-   }
-
    const auth = await Auth.findByEmailAndCode(req.body.email, req.body.code);
    if (!auth) {
       return res.status(401).send({
@@ -22,6 +16,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
          message: "code expired",
       });
    }
+
    const token = generate({ userId: auth.data.userId });
-   res.status(200).send({ message: "hay token", token });
+   res.status(200).send({ token });
 }
