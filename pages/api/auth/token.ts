@@ -23,5 +23,5 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       });
    }
    const token = generate({ userId: auth.data.userId });
-   res.status(200).send({ message: "hay token" });
+   res.status(200).send({ message: "hay token", token });
 }
