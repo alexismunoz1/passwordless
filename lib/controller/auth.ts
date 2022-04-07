@@ -33,7 +33,7 @@ export async function sendCode(email: string) {
    const auth = await findOrCreateAuth(email);
 
    const code = random.intBetween(100000, 999999);
-   auth.data.code = code;
+   auth.data.code = code.toString();
 
    const now = new Date();
    const expires = addMinutes(now, 5);

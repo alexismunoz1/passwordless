@@ -8,6 +8,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       return res.status(200).send("ok");
    }
 
-   await sendCode(req.body.email);
-   res.status(200).send({ message: "se envio el mail" });
+   const response = await sendCode(req.body.email);
+   res.status(200).send({ message: "Codigo enviado" });
 }

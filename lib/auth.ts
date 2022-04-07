@@ -54,7 +54,7 @@ export class Auth {
       return newUser;
    }
 
-   static async findByEmailAndCode(email: string, code: number) {
+   static async findByEmailAndCode(email: string, code: string) {
       const cleanEmail = Auth.cleanEmail(email);
       const result = await collection
          .where("email", "==", cleanEmail)
